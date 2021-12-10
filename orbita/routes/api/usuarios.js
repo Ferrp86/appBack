@@ -1,9 +1,8 @@
 const router = require('express').Router();
 
-router.post('/', (req, res) => {
+router.post('/login', (req, res) => {
     try {
-        res.send('Funciona!');
-
+        res.json({ msg: 'hellou' })
     } catch (err) {
         res.json({ error: err.message });
     }
