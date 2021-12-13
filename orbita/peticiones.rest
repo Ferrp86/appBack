@@ -6,3 +6,7 @@ Content-Type: application/json
     "email": "fer@gmail.com",
     "password": "1234"
 }
+
+###
+
+POST http://localhost:3000/api/registro
