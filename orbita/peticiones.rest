@@ -12,11 +12,11 @@ POST http://localhost:3000/api/usuarios/registro
 Content-Type: application/json
 
 {
-    "nombre": "Fernando",
-    "primer_apellido": "Reviriego",
-    "segundo_apellido": "Pina",
-    "email": "fer2@gmail.com",
-    "fecha_nacimiento": "01/01/1986",
-    "nombre_usuario": "fer24",
-    "password": "12345"
+    "nombre": "Manolo",
+    "primer_apellido": "Lopez",
+    "segundo_apellido": "Martinez",
+    "email": "manolo@gmail.com",
+    "fecha_nacimiento": "01/03/1986",
+    "nombre_usuario": "manue",
+    "password": "abc123"
 }
