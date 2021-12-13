@@ -8,5 +8,15 @@ Content-Type: application/json
 }
 
 ###
+POST http://localhost:3000/api/usuarios/registro
+Content-Type: application/json
 
-POST http://localhost:3000/api/registro
+{
+    "nombre": "Fernando",
+    "primer_apellido": "Reviriego",
+    "segundo_apellido": "Pina",
+    "email": "fer2@gmail.com",
+    "fecha_nacimiento": "01/01/1986",
+    "nombre_usuario": "fer24",
+    "password": "12345"
+}
