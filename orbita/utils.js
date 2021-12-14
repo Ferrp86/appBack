@@ -1,3 +1,5 @@
+const jwt = require('jsonwebtoken');
+
 const executeQuery = (query, data = []) => {
     return new Promise((resolve, reject) => {
         db.query(query, data, (err, result) => {
@@ -17,4 +19,11 @@ const executeQueryOne = (query, data = []) => {
     });
 }
 
-module.exports = { executeQuery, executeQueryOne }
+const createToken = (usuario) => {
+    const obj = {
+        usuarioId: usuario.id
+    }
+    return jwt.sign(obj, process.env.SECRET_KEY);
+}
+
+module.exports = { executeQuery, executeQueryOne, createToken }

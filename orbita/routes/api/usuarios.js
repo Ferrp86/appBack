@@ -1,18 +1,19 @@
 const router = require('express').Router();
 const { createUser, getUser } = require('../../models/usuario.model');
+const { createToken } = require('../../utils');
 
 router.post('/login', async (req, res) => {
-    let result;
+    let usuario;
     try {
-        result = await getUser(req.body);
+        usuario = await getUser(req.body);
     } catch (err) {
         res.json({ error: err.message });
     }
 
-    if (!result) {
+    if (!usuario) {
         return res.json({ Error: 'Email o password incorrectos' });
     }
-    res.json(result);
+    res.json({ token: createToken(usuario) });
 });
 
 router.post('/registro', async (req, res) => {
