@@ -1,14 +1,21 @@
 const bcrypt = require('bcryptjs');
 
 const router = require('express').Router();
-const { createUser } = require('../../models/usuario.model');
+const { createUser, getUser } = require('../../models/usuario.model');
+const { createToken } = require('../../utils');
 
-router.post('/login', (req, res) => {
+router.post('/login', async (req, res) => {
+    let usuario;
     try {
-        res.json({ msg: 'hellou' })
+        usuario = await getUser(req.body);
     } catch (err) {
         res.json({ error: err.message });
     }
+
+    if (!usuario) {
+        return res.json({ Error: 'Email o password incorrectos' });
+    }
+    res.json({ token: createToken(usuario) });
 });
 
 router.post('/registro', async (req, res) => {
@@ -18,7 +25,7 @@ router.post('/registro', async (req, res) => {
         const result = await createUser(req.body);
         res.json(result);
     } catch (err) {
-        console.log(err.message);
+        res.json({ error: err.message });
     }
 });
 
