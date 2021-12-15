@@ -15,7 +15,7 @@ router.post('/login', async (req, res) => {
     if (!usuario) {
         return res.json({ Error: 'Email o password incorrectos' });
     }
-    res.json({ token: createToken(usuario) });
+    res.json({ token: createToken(usuario), username: usuario.nombre_usuario });
 });
 
 router.post('/registro', async (req, res) => {
