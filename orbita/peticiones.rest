@@ -30,3 +30,16 @@ Content-Type: application/json
     "usuario_local": "moreria",
     "password": "moreria"
 }
+
+###
+POST http://localhost:3000/api/locales/registro
+Content-Type: application/json
+
+{
+    "nombre_local": "Gres",
+    "direccion_local": "C. de Fernando el Católico, 86, 28015",
+    "ciudad_local": "Madrid",
+    "descripcion": "Bar de copas",
+    "usuario_local": "andres",
+    "password": "andres123"
+}
