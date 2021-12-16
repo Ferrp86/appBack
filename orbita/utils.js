@@ -26,4 +26,11 @@ const createToken = (usuario) => {
     return jwt.sign(obj, process.env.SECRET_KEY);
 }
 
-module.exports = { executeQuery, executeQueryOne, createToken }
+const createTokenLocal = (local) => {
+    const obj = {
+        localId: local.id
+    }
+    return jwt.sign(obj, process.env.SECRET_KEY);
+}
+
+module.exports = { executeQuery, executeQueryOne, createToken, createTokenLocal }

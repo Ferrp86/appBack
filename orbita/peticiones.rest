@@ -20,3 +20,13 @@ Content-Type: application/json
     "nombre_usuario": "manue",
     "password": "abc123"
 }
+
+
+###
+POST http://localhost:3000/api/locales/login
+Content-Type: application/json
+
+{
+    "usuario_local": "moreria",
+    "password": "moreria"
+}
