@@ -43,3 +43,15 @@ Content-Type: application/json
     "usuario_local": "andres",
     "password": "andres123"
 }
+
+###
+POST http://localhost:3000/api/locales/perfilLocal
+Content-Type: application/json
+
+{
+    "nombre_evento": "DNB NIGHT",
+    "descripcion": "hora: 22:00 - 6:00 Precio: 5€",
+    "localizacion": "Sevilla",
+    "fecha_evento": "28-04-2022",
+    "categoria": "musica electronica"
+}

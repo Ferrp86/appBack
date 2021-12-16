@@ -1,4 +1,5 @@
 const bcrypt = require('bcryptjs');
+const { createEvent } = require('../../models/evento.model');
 
 const router = require('express').Router();
 const { getLocal, createLocal } = require('../../models/local.model');
@@ -26,6 +27,15 @@ router.post('/registro', async (req, res) => {
         req.body.password = bcrypt.hashSync(req.body.password);
 
         const result = await createLocal(req.body);
+        res.json(result);
+    } catch (err) {
+        res.json({ error: err.message });
+    }
+});
+
+router.post('/perfilLocal', async (req, res) => {
+    try {
+        const result = await createEvent(req.body);
         res.json(result);
     } catch (err) {
         res.json({ error: err.message });

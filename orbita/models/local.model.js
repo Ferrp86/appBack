@@ -8,4 +8,6 @@ const getLocal = ({ usuario_local, password }) => {
     return executeQueryOne('select * from locales where usuario_local = ? and password = ?', [usuario_local, password]);
 }
 
+
+
 module.exports = { createLocal, getLocal }
