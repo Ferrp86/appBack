@@ -18,7 +18,7 @@ router.post('/login', async (req, res) => {
         return res.json({ Error: 'Usuario o password incorrectos' });
     }
 
-    res.json({ token: createTokenLocal(local), local_name: local.nombre_local });
+    res.json({ token: createTokenLocal(local), local_name: local.nombre_local, local_desc: local.descripcion });
 });
 
 router.post('/registro', async (req, res) => {
