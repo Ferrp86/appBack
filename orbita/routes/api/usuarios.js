@@ -1,8 +1,19 @@
 const bcrypt = require('bcryptjs');
+const { getAllEvents } = require('../../models/evento.model');
 
 const router = require('express').Router();
 const { createUser, getUser } = require('../../models/usuario.model');
 const { createToken } = require('../../utils');
+
+router.get('/perfil', async (req, res) => {
+    try {
+        const event = await getAllEvents();
+        res.json(event);
+    }
+    catch (err) {
+        res.json({ err: err.message });
+    }
+})
 
 router.post('/login', async (req, res) => {
     let usuario;

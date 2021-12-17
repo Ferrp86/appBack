@@ -4,4 +4,8 @@ const createEvent = ({ nombre_evento, descripcion, localizacion, fecha_evento, c
     return executeQuery('insert into eventos ( nombre_evento, descripcion, localizacion, fecha_evento, categoria) values (?,?,?,?,?)', [nombre_evento, descripcion, localizacion, fecha_evento, categoria]);
 };
 
-module.exports = { createEvent };
+const getAllEvents = () => {
+    return executeQuery('select * from eventos');
+}
+
+module.exports = { createEvent, getAllEvents };

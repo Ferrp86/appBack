@@ -55,3 +55,7 @@ Content-Type: application/json
     "fecha_evento": "28-04-2022",
     "categoria": "musica electronica"
 }
+
+###
+GET http://localhost:3000/api/usuarios/perfil
+Content-Type: application/json
