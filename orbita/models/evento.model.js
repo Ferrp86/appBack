@@ -8,4 +8,8 @@ const getAllEvents = () => {
     return executeQuery('select * from eventos');
 }
 
-module.exports = { createEvent, getAllEvents };
+const getEventsById = (id) => {
+    return executeQuery('select * from eventos where id = ?', [id]);
+}
+
+module.exports = { createEvent, getAllEvents, getEventsById };

@@ -21,7 +21,6 @@ Content-Type: application/json
     "password": "abc123"
 }
 
-
 ###
 POST http://localhost:3000/api/locales/login
 Content-Type: application/json
@@ -57,5 +56,5 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3000/api/usuarios/perfil
+GET http://localhost:3000/api/eventos/1
 Content-Type: application/json
