@@ -8,4 +8,12 @@ const getUser = ({ email, password }) => {
     return executeQueryOne('select * from usuarios where email = ? and password = ?', [email, password]);
 }
 
-module.exports = { createUser, getUser }
+const getUserById = (id) => {
+    return executeQueryOne('select * from usuarios where id = ?', [id]);
+}
+
+const getUserEvent = (id) => {
+    return executeQuery('select usuarios.*, eventos.* from user_event join usuarios on user_event.id_usuario = usuarios.id join eventos on user_event.id_evento = eventos.id where usuarios.id = ?', [id]);
+}
+
+module.exports = { createUser, getUser, getUserEvent, getUserById }

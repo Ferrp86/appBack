@@ -1,13 +1,23 @@
 const bcrypt = require('bcryptjs');
 const { getAllEvents } = require('../../models/evento.model');
-
+const { checkToken } = require('../middlewares');
 const router = require('express').Router();
-const { createUser, getUser } = require('../../models/usuario.model');
+const { createUser, getUser, getUserEvent } = require('../../models/usuario.model');
 const { createToken } = require('../../utils');
 
 router.get('/perfil', async (req, res) => {
     try {
         const event = await getAllEvents();
+        res.json(event);
+    }
+    catch (err) {
+        res.json({ err: err.message });
+    }
+})
+
+router.get('/events', checkToken, async (req, res) => {
+    try {
+        const event = await getUserEvent(req.user.id);
         res.json(event);
     }
     catch (err) {
@@ -26,7 +36,7 @@ router.post('/login', async (req, res) => {
     if (!usuario) {
         return res.json({ Error: 'Email o password incorrectos' });
     }
-    res.json({ token: createToken(usuario), username: usuario.nombre_usuario, nombre: usuario.nombre, apellidoUno: usuario.primer_apellido, apellidoDos: usuario.segundo_apellido });
+    res.json({ token: createToken(usuario), username: usuario.nombre_usuario, nombre: usuario.nombre, apellidoUno: usuario.primer_apellido, apellidoDos: usuario.segundo_apellido, id: usuario.id });
 });
 
 router.post('/registro', async (req, res) => {

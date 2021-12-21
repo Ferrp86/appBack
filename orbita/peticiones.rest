@@ -58,3 +58,17 @@ Content-Type: application/json
 ###
 GET http://localhost:3000/api/eventos/1
 Content-Type: application/json
+
+###
+GET http://localhost:3000/api/usuarios/events
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvSWQiOjIsImlhdCI6MTY0MDA4NzU1MX0.j5R6qZSXM8F8lz5EDEmzFBVZzrcm48UgLLJ000CeNcU
+
+###
+POST http://localhost:3000/api/eventos
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvSWQiOjIsImlhdCI6MTY0MDA4NzU1MX0.j5R6qZSXM8F8lz5EDEmzFBVZzrcm48UgLLJ000CeNcU
+
+{
+    "id": 2
+}

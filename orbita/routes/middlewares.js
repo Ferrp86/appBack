@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const { getUser } = require('../models/usuario.model');
+const { getUserById } = require('../models/usuario.model');
 
 const checkToken = async (req, res, next) => {
 
@@ -16,9 +16,9 @@ const checkToken = async (req, res, next) => {
         return res.status(401).json({ error: 'El token es erroneo' });
     }
 
-    const usuario = await getUser(obj.usuarioId);
+    const usuario = await getUserById(obj.usuarioId);
     req.user = usuario;
-
+    console.log(req.user);
     next();
 }
 
