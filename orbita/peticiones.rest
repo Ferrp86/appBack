@@ -46,6 +46,7 @@ Content-Type: application/json
 ###
 POST http://localhost:3000/api/locales/perfilLocal
 Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2NhbElkIjoxLCJpYXQiOjE2NDAxNjgyMDd9.jDGgQz0pK0ySQYRzzByhGOFYl-VXV2-l49YlGfYs2k8
 
 {
     "nombre_evento": "DNB NIGHT",

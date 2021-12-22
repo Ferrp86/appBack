@@ -1,7 +1,17 @@
-const { getEventsById, addEventUser } = require('../../models/evento.model');
-const { checkToken } = require('../middlewares');
+const { getEventsById, addEventUser, getEventsByLocal } = require('../../models/evento.model');
+const { checkToken, checkTokenLocal } = require('../middlewares');
 
 const router = require('express').Router();
+
+router.get('/', checkTokenLocal, async (req, res) => {
+    try {
+        const event = await getEventsByLocal(req.local.id);
+        res.json(event);
+    }
+    catch (err) {
+        res.json({ err: err.message });
+    }
+})
 
 router.get('/:id', async (req, res) => {
     try {
@@ -14,7 +24,6 @@ router.get('/:id', async (req, res) => {
 })
 
 router.post('/', checkToken, async (req, res) => {
-    console.log(req.body);
     try {
         const event = await addEventUser(req.body.id, req.user.id);
         res.json(event);

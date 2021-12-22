@@ -1,9 +1,10 @@
 const bcrypt = require('bcryptjs');
-const { createEvent } = require('../../models/evento.model');
+const { createEvent, createRelationship } = require('../../models/evento.model');
 
 const router = require('express').Router();
 const { getLocal, createLocal } = require('../../models/local.model');
 const { createTokenLocal } = require('../../utils');
+const { checkTokenLocal } = require('../middlewares');
 
 
 router.post('/login', async (req, res) => {
@@ -18,14 +19,12 @@ router.post('/login', async (req, res) => {
         return res.json({ Error: 'Usuario o password incorrectos' });
     }
 
-    res.json({ token: createTokenLocal(local), local_name: local.nombre_local, local_desc: local.descripcion });
+    res.json({ token: createTokenLocal(local), local_name: local.nombre_local, local_desc: local.descripcion, direccion: local.direccion_local });
 });
 
 router.post('/registro', async (req, res) => {
-    console.log(req.body);
     try {
         req.body.password = bcrypt.hashSync(req.body.password);
-
         const result = await createLocal(req.body);
         res.json(result);
     } catch (err) {
@@ -33,10 +32,12 @@ router.post('/registro', async (req, res) => {
     }
 });
 
-router.post('/perfilLocal', async (req, res) => {
+router.post('/perfilLocal', checkTokenLocal, async (req, res) => {
     try {
         const result = await createEvent(req.body);
-        res.json(result);
+        console.log(result.insertId);
+        const result2 = await createRelationship(result.insertId, req.local.id);
+        res.json(result2);
     } catch (err) {
         res.json({ error: err.message });
     }
